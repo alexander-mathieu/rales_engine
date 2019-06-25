@@ -4,7 +4,7 @@ RSpec.describe "Merchants API" do
   it "delivers a list of all Merchants" do
     create_list(:merchant, 3)
 
-    get "/api/v1/merchants.json"
+    get "/api/v1/merchants"
 
     expect(response).to be_successful
 
@@ -16,7 +16,7 @@ RSpec.describe "Merchants API" do
   it "delivers a single Merchant by ID" do
     id = create(:merchant).id
 
-    get "/api/v1/merchants/#{id}.json"
+    get "/api/v1/merchants/#{id}"
 
     expect(response).to be_successful
 

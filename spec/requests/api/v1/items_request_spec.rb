@@ -4,7 +4,7 @@ RSpec.describe "Items API" do
   it "delivers a list of all Items" do
     create_list(:item, 3)
 
-    get "/api/v1/items.json"
+    get "/api/v1/items"
 
     expect(response).to be_successful
 
@@ -16,7 +16,7 @@ RSpec.describe "Items API" do
   it "delivers a single Item by ID" do
     id = create(:item).id
 
-    get "/api/v1/items/#{id}.json"
+    get "/api/v1/items/#{id}"
 
     expect(response).to be_successful
 
