@@ -6,6 +6,9 @@ Rails.application.routes.draw do
 
       get "merchants.json", to: 'merchants#index', as: :merchants_index
       get "merchants/:id.json", to: 'merchants#show', as: :merchants_show
+
+      get "transactions.json", to: 'transactions#index', as: :transactions_index
+      get "transactions/:id.json", to: 'transactions#show', as: :transactions_show
     end
   end
 end
