@@ -1,5 +1,6 @@
 class MerchantSerializer
   include FastJsonapi::ObjectSerializer
 
-  attributes :id, :name
+  attributes :id,
+             :name
 end
