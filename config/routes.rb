@@ -12,6 +12,9 @@ Rails.application.routes.draw do
 
       get "invoices.json", to: 'invoices#index', as: :invoices_index
       get "invoices/:id.json", to: 'invoices#show', as: :invoices_show
+
+      get "items.json", to: 'items#index', as: :items_index
+      get "items/:id.json", to: 'items#show', as: :items_show
     end
   end
 end
