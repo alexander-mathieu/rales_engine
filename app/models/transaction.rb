@@ -1,5 +1,6 @@
 class Transaction < ApplicationRecord
   belongs_to :invoice
 
-  validates :credit_card_number, :result, presence: true
+  validates_presence_of :result,
+                        :credit_card_number
 end

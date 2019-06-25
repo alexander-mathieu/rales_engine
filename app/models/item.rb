@@ -4,5 +4,7 @@ class Item < ApplicationRecord
   has_many :invoice_items
   has_many :invoices, through: :invoice_items
 
-  validates :name, :unit_price, :description, presence: true
+  validates_presence_of :name,
+                        :unit_price,
+                        :description
 end
