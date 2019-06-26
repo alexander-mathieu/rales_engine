@@ -1,7 +1,8 @@
 class TransactionSerializer
   include FastJsonapi::ObjectSerializer
 
-  attributes :result,
+  attributes :id,
+             :result,
              :invoice_id,
              :credit_card_number
 end
