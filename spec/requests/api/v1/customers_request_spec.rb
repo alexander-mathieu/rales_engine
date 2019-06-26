@@ -4,7 +4,7 @@ RSpec.describe "Customers API" do
   it "delivers a list of all Customers" do
     create_list(:customer, 3)
 
-    get "/api/v1/customers.json"
+    get "/api/v1/customers"
 
     expect(response).to be_successful
 
@@ -16,7 +16,7 @@ RSpec.describe "Customers API" do
   it "delivers a single Customer by ID" do
     id = create(:customer).id
 
-    get "/api/v1/customers/#{id}.json"
+    get "/api/v1/customers/#{id}"
 
     expect(response).to be_successful
 

@@ -4,7 +4,7 @@ RSpec.describe "InvoiceItem API" do
   it "delivers a list of all InvoiceItem" do
     create_list(:invoice_item, 3)
 
-    get "/api/v1/invoice_items.json"
+    get "/api/v1/invoice_items"
 
     expect(response).to be_successful
 
@@ -16,7 +16,7 @@ RSpec.describe "InvoiceItem API" do
   it "delivers a single InvoiceItem by ID" do
     id = create(:invoice_item).id
 
-    get "/api/v1/invoice_items/#{id}.json"
+    get "/api/v1/invoice_items/#{id}"
 
     expect(response).to be_successful
 

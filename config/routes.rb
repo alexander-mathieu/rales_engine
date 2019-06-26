@@ -1,23 +1,16 @@
 Rails.application.routes.draw do
   namespace :api do
     namespace :v1 do
-      get "customers.json", to: 'customers#index', as: :customers_index
-      get "customers/:id.json", to: 'customers#show', as: :customers_show
+      namespace :merchants do
+        get "/most_revenue", to: "most_revenue#index"
+      end
 
-      get "merchants.json", to: 'merchants#index', as: :merchants_index
-      get "merchants/:id.json", to: 'merchants#show', as: :merchants_show
-
-      get "transactions.json", to: 'transactions#index', as: :transactions_index
-      get "transactions/:id.json", to: 'transactions#show', as: :transactions_show
-
-      get "invoices.json", to: 'invoices#index', as: :invoices_index
-      get "invoices/:id.json", to: 'invoices#show', as: :invoices_show
-
-      get "items.json", to: 'items#index', as: :items_index
-      get "items/:id.json", to: 'items#show', as: :items_show
-
-      get "invoice_items.json", to: 'invoice_items#index', as: :invoice_items_index
-      get "invoice_items/:id.json", to: 'invoice_items#show', as: :invoice_items_show
+      resources :items, only: [:index, :show]
+      resources :invoices, only: [:index, :show]
+      resources :customers, only: [:index, :show]
+      resources :merchants, only: [:index, :show]
+      resources :transactions, only: [:index, :show]
+      resources :invoice_items, only: [:index, :show]
     end
   end
 end
