@@ -4,6 +4,8 @@ class Merchant < ApplicationRecord
 
   validates_presence_of :name
 
+  scope :default_sort, -> { order(name: :asc) }
+
   def self.most_revenue(quantity)
     select('merchants.*, SUM(invoice_items.quantity * invoice_items.unit_price) AS total_revenue')
     .joins(invoices: [:invoice_items, :transactions])
