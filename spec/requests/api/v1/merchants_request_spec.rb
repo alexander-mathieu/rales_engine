@@ -25,7 +25,7 @@ RSpec.describe "Merchants API" do
     expect(merchant["id"].to_i).to eq(id)
   end
 
-  it "delivers all items for a single Merchant" do
+  it "delivers all Items for a single Merchant" do
     merchant = create(:merchant)
 
     item_1 = create(:item, merchant: merchant)
@@ -43,7 +43,7 @@ RSpec.describe "Merchants API" do
     expect(merchant_items[2]["id"].to_i).to eq(item_3.id)
   end
 
-  it "delivers all invoices for a single Merchant" do
+  it "delivers all Invoices for a single Merchant" do
     merchant = create(:merchant)
 
     invoice_1 = create(:invoice, merchant: merchant)
