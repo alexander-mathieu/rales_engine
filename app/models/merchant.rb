@@ -11,6 +11,14 @@ class Merchant < ApplicationRecord
     .take
   end
 
+  def date_revenue(date)
+    invoices.select("SUM(invoice_items.quantity * invoice_items.unit_price) AS revenue")
+    .joins(:items, :transactions)
+    .merge(Transaction.successful)
+    .where("CAST(invoices.updated_at AS text) LIKE ?", "#{date}%")
+    .take
+  end
+
   def self.most_revenue(quantity)
     select("merchants.*, SUM(invoice_items.quantity * invoice_items.unit_price) AS total_revenue")
     .joins(invoices: [:invoice_items, :transactions])
@@ -29,7 +37,7 @@ class Merchant < ApplicationRecord
     .limit(quantity)
   end
 
-  def self.total_revenue(date)
+  def self.total_date_revenue(date)
     select("SUM(invoice_items.quantity * invoice_items.unit_price) AS total_revenue")
     .joins(invoices: [:items, :transactions])
     .merge(Transaction.successful)
