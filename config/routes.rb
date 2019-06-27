@@ -18,6 +18,8 @@ Rails.application.routes.draw do
 
         get "/:id/items", to: "items#index"
         get "/:id/invoices", to: "invoices#index"
+        
+        get ":id/favorite_customer", to: "favorite_customer#index"
       end
 
       resources :items, only: [:index, :show]

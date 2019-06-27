@@ -1,18 +1,21 @@
 class Merchant < ApplicationRecord
   has_many :items
   has_many :invoices
+  has_many :customers, through: :invoices
 
   validates_presence_of :name
 
   def revenue
-    invoices.select("SUM(invoice_items.quantity * invoice_items.unit_price) AS revenue")
+    invoices
+    .select("SUM(invoice_items.quantity * invoice_items.unit_price) AS revenue")
     .joins(:invoice_items, :transactions)
     .merge(Transaction.successful)
     .take
   end
 
   def date_revenue(date)
-    invoices.select("SUM(invoice_items.quantity * invoice_items.unit_price) AS revenue")
+    invoices
+    .select("SUM(invoice_items.quantity * invoice_items.unit_price) AS revenue")
     .joins(:items, :transactions)
     .merge(Transaction.successful)
     .where("CAST(invoices.updated_at AS text) LIKE ?", "#{date}%")
@@ -42,6 +45,16 @@ class Merchant < ApplicationRecord
     .joins(invoices: [:items, :transactions])
     .merge(Transaction.successful)
     .where("CAST(invoices.updated_at AS text) LIKE ?", "#{date}%")
+    .take
+  end
+
+  def favorite_customer
+    customers
+    .joins(invoices: :transactions)
+    .merge(Transaction.successful)
+    .group(:id)
+    .order("COUNT(transactions.id) DESC")
+    .limit(1)
     .take
   end
 end
