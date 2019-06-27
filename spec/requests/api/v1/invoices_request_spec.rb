@@ -49,6 +49,19 @@ RSpec.describe "Invoices API" do
     expect(invoice_items[2]["id"].to_i).to eq(item_3.id)
   end
 
+  it "delivers the Customer for a single Invoice" do
+    customer = create(:customer)
+    invoice  = create(:invoice, customer: customer)
+
+    get "/api/v1/invoices/#{invoice.id}/customer"
+
+    expect(response).to be_successful
+
+    invoice_customer = JSON.parse(response.body)["data"]
+
+    expect(invoice_customer["id"].to_i).to eq(customer.id)
+  end
+
   it "delivers the Merchant for a single Invoice" do
     merchant = create(:merchant)
     invoice  = create(:invoice, merchant: merchant)
