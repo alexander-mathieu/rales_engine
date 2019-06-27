@@ -10,7 +10,9 @@ Rails.application.routes.draw do
       end
 
       namespace :merchants do
-        get "/revenue", to: "total_revenue#index"
+        get "/revenue", to: "revenue#index"
+        get "/:id/revenue", to: "revenue#show"
+
         get "/most_items", to: "most_items#index"
         get "/most_revenue", to: "most_revenue#index"
 
