@@ -4,6 +4,13 @@ class Merchant < ApplicationRecord
 
   validates_presence_of :name
 
+  def revenue
+    invoices.select("SUM(invoice_items.quantity * invoice_items.unit_price) AS revenue")
+    .joins(:invoice_items, :transactions)
+    .merge(Transaction.successful)
+    .take
+  end
+
   def self.most_revenue(quantity)
     select("merchants.*, SUM(invoice_items.quantity * invoice_items.unit_price) AS total_revenue")
     .joins(invoices: [:invoice_items, :transactions])
