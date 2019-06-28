@@ -1,7 +1,7 @@
 # Rales Engine
 
 ## Description
-This is a [Turing: School of Software and Design](https://turing.io/) project that uses Rails to build a REST API which exposes the [SalesEngine](https://github.com/turingschool-examples/sales_engine/tree/master/data) data schema.
+This is a [Turing School of Software and Design](https://turing.io/) project that uses Rails to build a REST API which exposes the [SalesEngine](https://github.com/turingschool-examples/sales_engine/tree/master/data) data schema.
 
 ## Requirements
  * [Ruby 2.4.1](https://www.ruby-lang.org/en/downloads/) - Ruby Version
@@ -25,7 +25,7 @@ $ rake import_csv:{customers,merchants,invoices,items,invoice_items,transactions
 ## API Exploration
 
 ## Running Tests
-Controller and model tests can be run by using RSpec:
+Controller and model tests can be run using RSpec:
 
 `$ rspec`
 
@@ -40,8 +40,6 @@ Then:
 `$ cd ../rales_engine_spec_harness`
 `$ bundle install`
 `$ bundle exec rake`
-
-Output should be
 
 Additional information on the spec harness can be found <a href="https://github.com/turingschool/rales_engine_spec_harness">here</a>.
 
