@@ -9,15 +9,15 @@ Rails.application.routes.draw do
 
       namespace :invoices do
         get "/:id/items", to: "items#index"
-        get "/:id/customer", to: "customer#show"
-        get "/:id/merchant", to: "merchant#show"
+        get "/:id/customer", to: "customers#show"
+        get "/:id/merchant", to: "merchants#show"
         get "/:id/transactions", to: "transactions#index"
         get "/:id/invoice_items", to: "invoice_items#index"
       end
 
       namespace :invoice_items do
-        get ":id/item", to: "item#show"
-        get ":id/invoice", to: "invoice#show"
+        get ":id/item", to: "items#show"
+        get ":id/invoice", to: "invoices#show"
       end
 
       namespace :customers do
