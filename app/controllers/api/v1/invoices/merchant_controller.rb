@@ -1,5 +1,5 @@
 class Api::V1::Invoices::MerchantController < ApplicationController
-  def index
+  def show
     render json: MerchantSerializer.new(Invoice.find(params[:id]).merchant)
   end
 end
