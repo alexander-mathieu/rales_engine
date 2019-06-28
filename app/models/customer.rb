@@ -1,6 +1,7 @@
 class Customer < ApplicationRecord
   has_many :invoices
   has_many :merchants, through: :invoices
+  has_many :transactions, through: :invoices
 
   validates_presence_of :last_name,
                         :first_name
