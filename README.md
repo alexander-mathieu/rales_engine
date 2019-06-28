@@ -1,24 +1,50 @@
-# README
+# Rales Engine
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## Description
+This is a [Turing: School of Software and Design](https://turing.io/) project that uses Rails to build a REST API which exposes the [SalesEngine](https://github.com/turingschool-examples/sales_engine/tree/master/data) data schema.
 
-Things you may want to cover:
+## Requirements
+ * [Ruby 2.4.1](https://www.ruby-lang.org/en/downloads/) - Ruby Version
+ * [Rails 5.1.7](https://rubyonrails.org/) - Rails Version
 
-* Ruby version
+## Installation
+```
+$ git clone https://github.com/alexander-mathieu/rales_engine.git
+$ cd rales_engine
+$ bundle install
+```
 
-* System dependencies
+## Database Setup
+```
+$ rake db:{drop,create}
+$ rake import_csv:{customers,merchants,invoices,items,invoice_items,transactions}
+```
 
-* Configuration
+## Schema
 
-* Database creation
+## API Exploration
 
-* Database initialization
+## Running Tests
+Controller and model tests can be run by using RSpec:
 
-* How to run the test suite
+`$ rspec`
 
-* Services (job queues, cache servers, search engines, etc.)
+The full testing suite can be run by be done cloning the spec harness into the PARENT DIRECTORY of `rales_engine`:
 
-* Deployment instructions
+`$ git clone https://github.com/turingschool/rales_engine_spec_harness.git`
 
-* ...
+Then:
+
+`$ cd rales_engine`
+`$ rails s`
+`$ cd ../rales_engine_spec_harness`
+`$ bundle install`
+`$ bundle exec rake`
+
+Output should be
+
+Additional information on the spec harness can be found <a href="https://github.com/turingschool/rales_engine_spec_harness">here</a>.
+
+## Author
+
+Alexander Mathieu
