@@ -2,13 +2,13 @@ Rails.application.routes.draw do
   namespace :api do
     namespace :v1 do
       namespace :items do
-        get ":id/merchant", to: "merchants#show"
-        get ":id/invoice_items", to: "invoice_items#index"
+        get "/:id/merchant", to: "merchants#show"
+        get "/:id/invoice_items", to: "invoice_items#index"
 
         get "/most_items", to: "most_items#index"
         get "/most_revenue", to: "most_revenue#index"
 
-        get ":id/best_day", to: "best_day#show"
+        get "/:id/best_day", to: "best_day#show"
       end
 
       namespace :invoices do
@@ -20,11 +20,14 @@ Rails.application.routes.draw do
       end
 
       namespace :invoice_items do
-        get ":id/item", to: "items#show"
-        get ":id/invoice", to: "invoices#show"
+        get "/:id/item", to: "items#show"
+        get "/:id/invoice", to: "invoices#show"
       end
 
       namespace :customers do
+        get "/:id/invoices", to: "invoices#index"
+        get "/:id/transactions", to: "transactions#index"
+
         get ":id/favorite_merchant", to: "favorite_merchant#show"
       end
 
@@ -38,7 +41,7 @@ Rails.application.routes.draw do
         get "/:id/items", to: "items#index"
         get "/:id/invoices", to: "invoices#index"
 
-        get ":id/favorite_customer", to: "favorite_customer#show"
+        get "/:id/favorite_customer", to: "favorite_customer#show"
       end
 
       resources :items, only: [:index, :show]
