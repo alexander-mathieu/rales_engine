@@ -44,6 +44,10 @@ Rails.application.routes.draw do
         get "/:id/favorite_customer", to: "favorite_customer#show"
       end
 
+      namespace :transactions do
+        get "/:id/invoice", to: "invoices#show"
+      end
+
       resources :items, only: [:index, :show]
       resources :invoices, only: [:index, :show]
       resources :customers, only: [:index, :show]

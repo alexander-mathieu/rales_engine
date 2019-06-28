@@ -24,4 +24,17 @@ RSpec.describe "Transactions API" do
 
     expect(transaction["id"].to_i).to eq(id)
   end
+
+  it "delivers the Invoice for a single Transaction" do
+    invoice      = create(:invoice)
+    transaction  = create(:transaction, invoice: invoice)
+
+    get "/api/v1/transactions/#{transaction.id}/invoice"
+
+    expect(response).to be_successful
+
+    transaction_invoice = JSON.parse(response.body)["data"]
+
+    expect(transaction_invoice["id"].to_i).to eq(invoice.id)
+  end
 end
