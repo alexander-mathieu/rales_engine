@@ -1,6 +1,10 @@
 Rails.application.routes.draw do
   namespace :api do
     namespace :v1 do
+      namespace :items do
+        get "/most_revenue", to: "most_revenue#index"
+      end
+
       namespace :invoices do
         get "/:id/items", to: "items#index"
         get "/:id/customer", to: "customer#index"
@@ -18,7 +22,7 @@ Rails.application.routes.draw do
 
         get "/:id/items", to: "items#index"
         get "/:id/invoices", to: "invoices#index"
-        
+
         get ":id/favorite_customer", to: "favorite_customer#index"
       end
 
