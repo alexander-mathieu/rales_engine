@@ -225,29 +225,11 @@ RSpec.describe "Customers API" do
 
     expect(customer[0]["id"].to_i).to eq(customer_1.id)
     expect(customer[1]["id"].to_i).to eq(customer_2.id)
-
-    get "/api/v1/customers/find_all?first_name=#{customer_1.first_name}"
-
-    expect(response).to be_successful
-
-    customer = JSON.parse(response.body)["data"]
-
-    expect(customer[0]["id"].to_i).to eq(customer_1.id)
-    expect(customer[1]["id"].to_i).to eq(customer_2.id)
   end
 
   it "finds all Customers by last_name" do
     customer_1 = create(:customer, last_name: "First Name 1")
     customer_2 = create(:customer, last_name: "First Name 1")
-
-    get "/api/v1/customers/find_all?last_name=#{customer_1.last_name}"
-
-    expect(response).to be_successful
-
-    customer = JSON.parse(response.body)["data"]
-
-    expect(customer[0]["id"].to_i).to eq(customer_1.id)
-    expect(customer[1]["id"].to_i).to eq(customer_2.id)
 
     get "/api/v1/customers/find_all?last_name=#{customer_1.last_name}"
 
@@ -271,29 +253,11 @@ RSpec.describe "Customers API" do
 
     expect(customer[0]["id"].to_i).to eq(customer_1.id)
     expect(customer[1]["id"].to_i).to eq(customer_2.id)
-
-    get "/api/v1/customers/find_all?created_at=#{customer_1.created_at}"
-
-    expect(response).to be_successful
-
-    customer = JSON.parse(response.body)["data"]
-
-    expect(customer[0]["id"].to_i).to eq(customer_1.id)
-    expect(customer[1]["id"].to_i).to eq(customer_2.id)
   end
 
   it "finds all Customers by updated_at" do
     customer_1 = create(:customer, created_at: "2012-03-20T14:54:05.000Z", updated_at: "2012-03-28T14:54:05.000Z")
     customer_2 = create(:customer, created_at: "2012-03-20T14:54:05.000Z", updated_at: "2012-03-28T14:54:05.000Z")
-
-    get "/api/v1/customers/find_all?created_at=#{customer_1.created_at}"
-
-    expect(response).to be_successful
-
-    customer = JSON.parse(response.body)["data"]
-
-    expect(customer[0]["id"].to_i).to eq(customer_1.id)
-    expect(customer[1]["id"].to_i).to eq(customer_2.id)
 
     get "/api/v1/customers/find_all?created_at=#{customer_1.created_at}"
 

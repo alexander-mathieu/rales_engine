@@ -200,15 +200,6 @@ RSpec.describe "Merchants API" do
 
     expect(merchant[0]["id"].to_i).to eq(merchant_1.id)
     expect(merchant[1]["id"].to_i).to eq(merchant_2.id)
-
-    get "/api/v1/merchants/find_all?name=#{merchant_1.name}"
-
-    expect(response).to be_successful
-
-    merchant = JSON.parse(response.body)["data"]
-
-    expect(merchant[0]["id"].to_i).to eq(merchant_1.id)
-    expect(merchant[1]["id"].to_i).to eq(merchant_2.id)
   end
 
   it "finds all Merchants by created_at" do
@@ -223,29 +214,11 @@ RSpec.describe "Merchants API" do
 
     expect(merchant[0]["id"].to_i).to eq(merchant_1.id)
     expect(merchant[1]["id"].to_i).to eq(merchant_2.id)
-
-    get "/api/v1/merchants/find_all?created_at=#{merchant_1.created_at}"
-
-    expect(response).to be_successful
-
-    merchant = JSON.parse(response.body)["data"]
-
-    expect(merchant[0]["id"].to_i).to eq(merchant_1.id)
-    expect(merchant[1]["id"].to_i).to eq(merchant_2.id)
   end
 
   it "finds all Merchants by updated_at" do
     merchant_1 = create(:merchant, created_at: "2012-03-20T14:54:05.000Z", updated_at: "2012-03-28T14:54:05.000Z")
     merchant_2 = create(:merchant, created_at: "2012-03-20T14:54:05.000Z", updated_at: "2012-03-28T14:54:05.000Z")
-
-    get "/api/v1/merchants/find_all?created_at=#{merchant_1.created_at}"
-
-    expect(response).to be_successful
-
-    merchant = JSON.parse(response.body)["data"]
-
-    expect(merchant[0]["id"].to_i).to eq(merchant_1.id)
-    expect(merchant[1]["id"].to_i).to eq(merchant_2.id)
 
     get "/api/v1/merchants/find_all?created_at=#{merchant_1.created_at}"
 
