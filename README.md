@@ -16,7 +16,7 @@ $ bundle install
 
 ## Database Setup
 ```
-$ rake db:{drop,create}
+$ rake db:{drop,create,migrate}
 $ rake import_csv:{customers,merchants,invoices,items,invoice_items,transactions}
 ```
 
