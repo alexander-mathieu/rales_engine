@@ -12,6 +12,10 @@ Rails.application.routes.draw do
       end
 
       namespace :invoices do
+        get "/find", to: "search#show"
+        get "/random", to: "search#show"
+        get "/find_all", to: "search#index"
+        
         get "/:id/items", to: "items#index"
         get "/:id/customer", to: "customers#show"
         get "/:id/merchant", to: "merchants#show"
@@ -28,7 +32,7 @@ Rails.application.routes.draw do
         get "/find", to: "search#show"
         get "/random", to: "search#show"
         get "/find_all", to: "search#index"
-        
+
         get "/:id/invoices", to: "invoices#index"
         get "/:id/transactions", to: "transactions#index"
 
