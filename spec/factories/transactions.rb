@@ -8,7 +8,7 @@ FactoryBot.define do
 
   factory :failed_transaction, parent: :transaction do
     association :invoice, factory: :invoice
-    
-    result { "failure"}
+
+    result { "failed"}
   end
 end
