@@ -60,4 +60,88 @@ RSpec.describe "Merchants API" do
     expect(merchant_invoices[1]["id"].to_i).to eq(invoice_2.id)
     expect(merchant_invoices[2]["id"].to_i).to eq(invoice_3.id)
   end
+
+  it "finds a single Merchant by ID" do
+    merchant_1 = create(:merchant)
+    merchant_2 = create(:merchant)
+
+    get "/api/v1/merchants/find?id=#{merchant_1.id}"
+
+    expect(response).to be_successful
+
+    merchant = JSON.parse(response.body)["data"]
+
+    expect(merchant["id"].to_i).to eq(merchant_1.id)
+
+    get "/api/v1/merchants/find?id=#{merchant_2.id}"
+
+    expect(response).to be_successful
+
+    merchant = JSON.parse(response.body)["data"]
+
+    expect(merchant["id"].to_i).to eq(merchant_2.id)
+  end
+
+  it "finds a single Merchant by name" do
+    merchant_1 = create(:merchant, name: "Merchant Name 1")
+    merchant_2 = create(:merchant, name: "Merchant Name 2")
+
+    get "/api/v1/merchants/find?name=#{merchant_1.name}"
+
+    expect(response).to be_successful
+
+    merchant = JSON.parse(response.body)["data"]
+
+    expect(merchant["id"].to_i).to eq(merchant_1.id)
+
+    get "/api/v1/merchants/find?name=#{merchant_2.name}"
+
+    expect(response).to be_successful
+
+    merchant = JSON.parse(response.body)["data"]
+
+    expect(merchant["id"].to_i).to eq(merchant_2.id)
+  end
+
+  it "finds a single Merchant by created_at" do
+    merchant_1 = create(:merchant, created_at: "2012-03-20T14:54:05.000Z")
+    merchant_2 = create(:merchant, created_at: "2012-03-22T14:54:05.000Z")
+
+    get "/api/v1/merchants/find?created_at=#{merchant_1.created_at}"
+
+    expect(response).to be_successful
+
+    merchant = JSON.parse(response.body)["data"]["attributes"]
+
+    expect(merchant["id"].to_i).to eq(merchant_1.id)
+
+    get "/api/v1/merchants/find?created_at=#{merchant_2.created_at}"
+
+    expect(response).to be_successful
+
+    merchant = JSON.parse(response.body)["data"]
+
+    expect(merchant["id"].to_i).to eq(merchant_2.id)
+  end
+
+  it "finds a single Merchant by updated_at" do
+    merchant_1 = create(:merchant, created_at: "2012-03-20T14:54:05.000Z", updated_at: "2012-03-28T14:54:05.000Z")
+    merchant_2 = create(:merchant, created_at: "2012-03-22T14:54:05.000Z", updated_at: "2012-03-26T14:54:05.000Z")
+
+    get "/api/v1/merchants/find?updated_at=#{merchant_1.updated_at}"
+
+    expect(response).to be_successful
+
+    merchant = JSON.parse(response.body)["data"]
+
+    expect(merchant["id"].to_i).to eq(merchant_1.id)
+
+    get "/api/v1/merchants/find?updated_at=#{merchant_2.updated_at}"
+
+    expect(response).to be_successful
+
+    merchant = JSON.parse(response.body)["data"]
+
+    expect(merchant["id"].to_i).to eq(merchant_2.id)
+  end
 end
