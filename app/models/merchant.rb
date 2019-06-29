@@ -57,4 +57,11 @@ class Merchant < ApplicationRecord
     .limit(1)
     .take
   end
+
+  def customers_with_pending_invoices
+    customers
+    .joins(:invoices)
+    .where.not(invoices: {id: Invoice.paid_invoice_ids})
+    .distinct
+  end
 end
