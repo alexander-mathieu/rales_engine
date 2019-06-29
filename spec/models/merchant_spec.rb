@@ -28,5 +28,17 @@ RSpec.describe Merchant, type: :model do
       expect(Merchant.search_by({"updated_at"=>"#{merchant_1.updated_at}"})).to eq(merchant_1)
       expect(Merchant.search_by({"updated_at"=>"#{merchant_2.updated_at}"})).to eq(merchant_2)
     end
+
+    it ".search_all_by" do
+      merchant_1 = create(:merchant, name: "Merchant Name 1", created_at: "2012-03-20T14:54:05.000Z", updated_at: "2012-03-28T14:54:05.000Z")
+      merchant_2 = create(:merchant, name: "Merchant Name 1", created_at: "2012-03-20T14:54:05.000Z", updated_at: "2012-03-28T14:54:05.000Z")
+
+      expect(Merchant.search_all_by({"id"=>"#{merchant_1.id}"})).to eq([merchant_1])
+      expect(Merchant.search_all_by({"id"=>"#{merchant_2.id}"})).to eq([merchant_2])
+
+      expect(Merchant.search_all_by({"name"=>"#{merchant_1.name}"})).to eq([merchant_1, merchant_2])
+      expect(Merchant.search_all_by({"created_at"=>"#{merchant_1.created_at}"})).to eq([merchant_1, merchant_2])
+      expect(Merchant.search_all_by({"updated_at"=>"#{merchant_1.updated_at}"})).to eq([merchant_1, merchant_2])
+    end
   end
 end

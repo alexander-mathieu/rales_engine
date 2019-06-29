@@ -43,6 +43,10 @@ class Merchant < ApplicationRecord
     where(search_params).first
   end
 
+  def self.search_all_by(search_params)
+    where(search_params)
+  end
+
   def self.most_revenue(quantity)
     select("merchants.*, SUM(invoice_items.quantity * invoice_items.unit_price) AS total_revenue")
     .joins(invoices: [:invoice_items, :transactions])
