@@ -8,6 +8,31 @@ class Item < ApplicationRecord
                         :unit_price,
                         :description
 
+  default_scope { order(id: :asc) }
+
+  def best_day
+    invoices
+    .select("invoices.created_at AS best_day, SUM(invoice_items.quantity) AS total_sold")
+    .joins(:transactions)
+    .merge(Transaction.successful)
+    .group(:created_at)
+    .order("total_sold DESC, best_day DESC")
+    .take
+  end
+
+  def self.search_by(search_params)
+    where(search_params).first
+  end
+
+  def self.find_random
+    order("RANDOM()")
+    .limit(1)
+  end
+
+  def self.search_all_by(search_params)
+    where(search_params)
+  end
+
   def self.most_revenue(quantity)
     select("items.*, SUM(invoice_items.quantity * invoice_items.unit_price) AS total_revenue")
     .joins(invoices: :transactions)
@@ -24,15 +49,5 @@ class Item < ApplicationRecord
     .group(:id)
     .order("total_sold DESC")
     .limit(quantity)
-  end
-
-  def best_day
-    invoices
-    .select("invoices.created_at AS best_day, SUM(invoice_items.quantity) AS total_sold")
-    .joins(:transactions)
-    .merge(Transaction.successful)
-    .group(:created_at)
-    .order("total_sold DESC, best_day DESC")
-    .take
   end
 end

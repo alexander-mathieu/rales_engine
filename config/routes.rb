@@ -2,6 +2,10 @@ Rails.application.routes.draw do
   namespace :api do
     namespace :v1 do
       namespace :items do
+        get "/find", to: "search#show"
+        get "/random", to: "search#show"
+        get "/find_all", to: "search#index"
+        
         get "/:id/merchant", to: "merchants#show"
         get "/:id/invoice_items", to: "invoice_items#index"
 
@@ -61,7 +65,7 @@ Rails.application.routes.draw do
         get "/find", to: "search#show"
         get "/random", to: "search#show"
         get "/find_all", to: "search#index"
-        
+
         get "/:id/invoice", to: "invoices#show"
       end
 
