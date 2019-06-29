@@ -5,6 +5,8 @@ class Transaction < ApplicationRecord
   validates_presence_of :result,
                         :credit_card_number
 
+  default_scope { order(id: :asc) }
+
   scope :successful, -> { where(result: "success") }
 
   def self.search_by(search_params)
