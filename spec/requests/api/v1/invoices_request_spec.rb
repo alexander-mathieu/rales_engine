@@ -139,14 +139,6 @@ RSpec.describe "Invoices API" do
     invoice = JSON.parse(response.body)["data"]
 
     expect(ids).to include(invoice[0]["id"].to_i)
-
-    get "/api/v1/invoices/random"
-
-    expect(response).to be_successful
-
-    invoice = JSON.parse(response.body)["data"]
-
-    expect(ids).to include(invoice[0]["id"].to_i)
   end
 
   it "finds a single Invoice by ID" do
