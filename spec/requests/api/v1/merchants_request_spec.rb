@@ -61,6 +61,28 @@ RSpec.describe "Merchants API" do
     expect(merchant_invoices[2]["id"].to_i).to eq(invoice_3.id)
   end
 
+  it "finds a random Merchant" do
+    create_list(:merchant, 4)
+
+    ids = Merchant.pluck(:id)
+
+    get "/api/v1/merchants/random"
+
+    expect(response).to be_successful
+
+    merchant = JSON.parse(response.body)["data"]
+
+    expect(ids).to include(merchant[0]["id"].to_i)
+
+    get "/api/v1/merchants/random"
+
+    expect(response).to be_successful
+
+    merchant = JSON.parse(response.body)["data"]
+
+    expect(ids).to include(merchant[0]["id"].to_i)
+  end
+
   it "finds a single Merchant by ID" do
     merchant_1 = create(:merchant)
     merchant_2 = create(:merchant)
