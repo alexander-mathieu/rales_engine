@@ -39,13 +39,14 @@ class Merchant < ApplicationRecord
     .take
   end
 
-  def self.search_by(search_params)
-    where(search_params).first
-  end
-
   def self.find_random
     order("RANDOM()")
     .limit(1)
+  end
+
+  def self.search_by(search_params)
+    where(search_params)
+    .first
   end
 
   def self.search_all_by(search_params)
