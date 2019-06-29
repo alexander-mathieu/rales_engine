@@ -8,19 +8,22 @@ class Invoice < ApplicationRecord
 
   validates_presence_of :status
 
-  default_scope { order(id: :asc) }
-
-  def self.search_by(search_params)
-    where(search_params).first
-  end
+  scope :id_sort_asc, -> { order(id: :asc) }
 
   def self.find_random
     order("RANDOM()")
     .limit(1)
   end
+  
+  def self.search_by(search_params)
+    where(search_params)
+    .merge(Invoice.id_sort_asc)
+    .first
+  end
 
   def self.search_all_by(search_params)
     where(search_params)
+    .merge(Invoice.id_sort_asc)
   end
 
   def self.paid_invoice_ids

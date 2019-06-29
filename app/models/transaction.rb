@@ -5,20 +5,22 @@ class Transaction < ApplicationRecord
   validates_presence_of :result,
                         :credit_card_number
 
-  default_scope { order(id: :asc) }
-
+  scope :id_sort_asc, -> { order(id: :asc) }
   scope :successful, -> { where(result: "success") }
-
-  def self.search_by(search_params)
-    where(search_params).first
-  end
 
   def self.find_random
     order("RANDOM()")
     .limit(1)
   end
 
+  def self.search_by(search_params)
+    where(search_params)
+    .merge(Transaction.id_sort_asc)
+    .first
+  end
+
   def self.search_all_by(search_params)
     where(search_params)
+    .merge(Transaction.id_sort_asc)
   end
 end

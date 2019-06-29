@@ -8,7 +8,7 @@ class Item < ApplicationRecord
                         :unit_price,
                         :description
 
-  default_scope { order(id: :asc) }
+  scope :id_sort_asc, -> { order(id: :asc) }
 
   def best_day
     invoices
@@ -20,17 +20,20 @@ class Item < ApplicationRecord
     .take
   end
 
-  def self.search_by(search_params)
-    where(search_params).first
-  end
-
   def self.find_random
     order("RANDOM()")
     .limit(1)
   end
 
+  def self.search_by(search_params)
+    where(search_params)
+    .merge(Item.id_sort_asc)
+    .first
+  end
+
   def self.search_all_by(search_params)
     where(search_params)
+    .merge(Item.id_sort_asc)
   end
 
   def self.most_revenue(quantity)
