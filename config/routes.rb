@@ -33,8 +33,8 @@ Rails.application.routes.draw do
 
       namespace :merchants do
         get "/find", to: "search#show"
+        get "/random", to: "search#show"
         get "/find_all", to: "search#index"
-        get "/random", to: "random#show"
 
         get "/revenue", to: "revenue#index"
         get "/:id/revenue", to: "revenue#show"
