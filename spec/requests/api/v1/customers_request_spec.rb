@@ -77,14 +77,6 @@ RSpec.describe "Customers API" do
     customer = JSON.parse(response.body)["data"]
 
     expect(ids).to include(customer[0]["id"].to_i)
-
-    get "/api/v1/customers/random"
-
-    expect(response).to be_successful
-
-    customer = JSON.parse(response.body)["data"]
-
-    expect(ids).to include(customer[0]["id"].to_i)
   end
 
   it "finds a single Customer by ID" do

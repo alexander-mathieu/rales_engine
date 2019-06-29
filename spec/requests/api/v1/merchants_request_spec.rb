@@ -73,14 +73,6 @@ RSpec.describe "Merchants API" do
     merchant = JSON.parse(response.body)["data"]
 
     expect(ids).to include(merchant[0]["id"].to_i)
-
-    get "/api/v1/merchants/random"
-
-    expect(response).to be_successful
-
-    merchant = JSON.parse(response.body)["data"]
-
-    expect(ids).to include(merchant[0]["id"].to_i)
   end
 
   it "finds a single Merchant by ID" do
