@@ -18,7 +18,7 @@ class Merchant < ApplicationRecord
     .select("SUM(invoice_items.quantity * invoice_items.unit_price) AS revenue")
     .joins(:items, :transactions)
     .merge(Transaction.successful)
-    .where("CAST(invoices.updated_at AS text) LIKE ?", "#{date}%")
+    .where("CAST(invoices.created_at AS text) LIKE ?", "#{date}%")
     .take
   end
 
@@ -75,7 +75,7 @@ class Merchant < ApplicationRecord
     select("SUM(invoice_items.quantity * invoice_items.unit_price) AS total_revenue")
     .joins(invoices: [:items, :transactions])
     .merge(Transaction.successful)
-    .where("CAST(invoices.updated_at AS text) LIKE ?", "#{date}%")
+    .where("CAST(invoices.created_at AS text) LIKE ?", "#{date}%")
     .take
   end
 end
