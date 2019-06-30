@@ -1,9 +1,7 @@
 # Rales Engine
 
 ## Description
-This is a [Turing School of Software and Design](https://turing.io/) project that uses Rails to build a REST API which exposes the [SalesEngine](https://github.com/turingschool-examples/sales_engine/tree/master/data) data schema.
-
-Additional information about this project can be found <a href="https://backend.turing.io/module3/projects/rails_engine#learning-goals">here</a>.
+Welcome to Rales Engine!  This is a [Turing School of Software and Design](https://turing.io/) project that uses Rails to build a REST API which exposes the [SalesEngine](https://github.com/turingschool-examples/sales_engine/tree/master/data) data schema.  Additional information about the project can be found <a href="https://backend.turing.io/module3/projects/rails_engine#learning-goals">here</a>.
 
 ## Requirements
  * [Ruby 2.4.1](https://www.ruby-lang.org/en/downloads/) - Ruby Version
