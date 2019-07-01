@@ -81,3 +81,5 @@ Fabulous run in 5.996532s, 17.8436 runs/s, 6080.5145 assertions/s.
 Additional information on the spec harness can be found <a href="https://github.com/turingschool/rales_engine_spec_harness">here</a>.
 
 ## Blog Post
+
+The blog post I wrote while completing this project can be viewed <a href="https://medium.com/@alexander_mathieu/from-views-to-apis-with-ruby-on-rails-378ec8c325e5">here</a>.
