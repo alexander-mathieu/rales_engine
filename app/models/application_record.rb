@@ -12,6 +12,6 @@ class ApplicationRecord < ActiveRecord::Base
 
   def self.search_all_by(search_params)
     where(search_params)
-    .order(id: :asc)
+    .order(:id)
   end
 end
