@@ -7,9 +7,7 @@ class ApplicationRecord < ActiveRecord::Base
   end
 
   def self.search_by(search_params)
-    where(search_params)
-    .order(id: :asc)
-    .first
+    search_all_by(search_params).first
   end
 
   def self.search_all_by(search_params)
