@@ -3,7 +3,7 @@
 # Rales Engine
 
 ## Description
-Welcome to Rales Engine! This is a [Turing School of Software & Design](https://turing.io/) project that uses Rails to build a JSON:API exposing the data schema from a retired Turing project, [Sales Engine](https://github.com/turingschool-examples/sales_engine/tree/master/data). Additional information about the project can be found [here](https://backend.turing.io/module3/projects/rails_engine#learning-goals).
+Welcome to _Rales Engine_! This is a [Turing School of Software & Design](https://turing.io/) project that uses Rails to build a JSON:API exposing the data schema from a retired Turing project, [Sales Engine](https://github.com/turingschool-examples/sales_engine/tree/master/data). Additional information about the project can be found [here](https://backend.turing.io/module3/projects/rails_engine#learning-goals).
 
 ## Requirements
  * [Ruby 2.4.1](https://www.ruby-lang.org/en/downloads/) - Ruby Version
