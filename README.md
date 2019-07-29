@@ -1,3 +1,5 @@
+![Rales Engine Screenshot](/rales_engine_screenshot.png?raw=true "Rales Engine Screenshot")
+
 # Rales Engine
 
 ## Description
