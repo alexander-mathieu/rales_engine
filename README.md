@@ -1,29 +1,29 @@
 ![Rales Engine Screenshot](/rales_engine_screenshot.png?raw=true "Rales Engine Screenshot")
 
 # Rales Engine
-
-## Description
+## About
 Welcome to _Rales Engine_! This is a [Turing School of Software & Design](https://turing.io/) project that uses Rails to build a JSON:API exposing the data schema from a retired Turing project, [Sales Engine](https://github.com/turingschool-examples/sales_engine/tree/master/data). Additional information about the project can be found [here](https://backend.turing.io/module3/projects/rails_engine#learning-goals).
 
-## Requirements
+## Schema
+![Rales Engine Schema](/rales_engine_schema.png?raw=true "Rales Engine Schema")
+
+## Local Installation
+### Requirements
  * [Ruby 2.4.1](https://www.ruby-lang.org/en/downloads/) - Ruby Version
  * [Rails 5.1.7](https://rubyonrails.org/) - Rails Version
 
-## Installation
+### Clone
 ```
 $ git clone https://github.com/alexander-mathieu/rales_engine.git
 $ cd rales_engine
 $ bundle install
 ```
 
-## Database Setup
+### Database Setup
 ```
 $ rake db:{drop,create,migrate}
 $ rake import_csv:{customers,merchants,invoices,items,invoice_items,transactions}
 ```
-
-## Schema
-![Rales Engine Schema](/rales_engine_schema.png?raw=true "Rales Engine Schema")
 
 ## API Exploration
 Once installation and database setup are complete, explore the various API endpoints with the following steps:
