@@ -4,7 +4,7 @@
 
 ## About
 
-Welcome to _Rales Engine_! This is a [Turing School of Software & Design](https://turing.io/) project that uses Rails to build a JSON:API exposing the data schema from a retired Turing project, [Sales Engine](https://github.com/turingschool-examples/sales_engine/tree/master/data). Additional information about the project can be found [here](https://backend.turing.io/module3/projects/rails_engine#learning-goals).
+Welcome to _Rales Engine_! This is a [Turing School of Software & Design](https://turing.io/) project that uses Rails to build a JSON:API exposing the data schema from a retired Turing project, [Sales Engine](https://github.com/turingschool-examples/sales_engine/tree/master/data/). Additional information about the project can be found [here](https://backend.turing.io/module3/projects/rails_engine#learning-goals/).
 
 ## Schema
 
@@ -37,9 +37,9 @@ $ rake import_csv:{customers,merchants,invoices,items,invoice_items,transactions
 Once installation and database setup are complete, explore the various API endpoints with the following steps:
 
 * From the `rales_engine` project directory, boot up a server with `rails s`
-* Open your browser, and visit `localhost:3000/`
+* Open your browser, and visit `http://localhost:3000/`
 * In a separate terminal window, query the available endpoints by running `rails routes`
-* Copy any of the URIs displayed and append to the `localhost:3000/` in your browser
+* Copy any of the URIs displayed and append to the `http://localhost:3000/` in your browser
 
 Example of expected output:
 ```
@@ -89,8 +89,8 @@ Fabulous run in 5.996532s, 17.8436 runs/s, 6080.5145 assertions/s.
 107 runs, 36462 assertions, 0 failures, 0 errors, 0 skips
 ```
 
-Additional information on the spec harness can be found [here](https://github.com/turingschool/rales_engine_spec_harness).
+Additional information on the spec harness can be found [here](https://github.com/turingschool/rales_engine_spec_harness/).
 
 ## Blog Post
 
-The blog post I wrote while completing this project can be viewed [here](https://medium.com/@alexander_mathieu/from-views-to-apis-with-ruby-on-rails-378ec8c325e5).
+The blog post I wrote while completing this project can be viewed [here](https://medium.com/@alexander_mathieu/from-views-to-apis-with-ruby-on-rails-378ec8c325e5/).
