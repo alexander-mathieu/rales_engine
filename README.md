@@ -33,7 +33,6 @@ $ rake import_csv:{customers,merchants,invoices,items,invoice_items,transactions
 ```
 
 ## API Exploration
-
 Once installation and database setup are complete, explore the various API endpoints with the following steps:
 
 * From the `rales_engine` project directory, boot up a server with `rails s`
