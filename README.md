@@ -38,7 +38,7 @@ Once installation and database setup are complete, explore the various API endpo
 * From the `rales_engine` project directory, boot up a server with `rails s`
 * Open your browser, and visit `http://localhost:3000/`
 * In a separate terminal window, query the available endpoints by running `rails routes`
-* Copy any of the URIs displayed and append to the `http://localhost:3000/` in your browser
+* Copy any of the URIs displayed and append to `http://localhost:3000/` in your browser
 
 Example of expected output:
 ```
