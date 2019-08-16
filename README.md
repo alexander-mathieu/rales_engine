@@ -61,7 +61,7 @@ Controller and model tests can be run using RSpec:
 
 `$ rspec`
 
-The full testing suite can be run by cloning the spec harness into the parent directory of `rales_engine`:
+The full test suite can be run by cloning the spec harness into the parent directory of `rales_engine`:
 
 `$ git clone https://github.com/turingschool/rales_engine_spec_harness.git`
 
